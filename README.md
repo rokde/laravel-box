@@ -4,6 +4,12 @@ Vagrantbox for laravel, uses scotch/box with a few customizations in vagrant fil
 All credits for the used vagrant box inside goes to [Scotch Box](http://box.scotch.io/).
 Check out the official docs at: [box.scotch.io](http://box.scotch.io).
 
+## Usage
+
+```bash
+$> curl https://raw.githubusercontent.com/rokde/laravel-box/master/Vagrantfile -o Vagrantfile
+```
+
 ## Features
 
 ### System Stuff
