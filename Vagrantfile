@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
     $script = <<-SCRIPT
         # update to php-7
         sudo apt-get update -y -qq
-        sudo add-apt-repository ppa:ondrej/php -y -qq
+        sudo add-apt-repository ppa:ondrej/php -y
         sudo apt-get install php7.0 -y -qq
         sudo apt-get update -y -qq
         sudo apt-get install php7.0-mysql libapache2-mod-php7.0 -y -qq
