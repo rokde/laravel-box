@@ -56,6 +56,9 @@ Vagrant.configure("2") do |config|
         sudo apt-get install php7.0 -y -qq
         sudo apt-get update -y -qq
         sudo apt-get install php7.0-mysql libapache2-mod-php7.0 -y -qq
+        sudo a2dismod php5
+        sudo a2enmod php7.0
+        sudo apache2ctl restart
 
         # install dependencies for laravel-elixir
         sudo apt-get install libnotify-bin -y -qq
