@@ -50,22 +50,32 @@ Vagrant.configure("2") do |config|
     end
 
     $script = <<-SCRIPT
+        # update to php-7
+        sudo apt-get update -y -qq
+        sudo add-apt-repository ppa:ondrej/php -y -qq
+        sudo apt-get install php7.0 -y -qq
+        sudo apt-get update -y -qq
+        sudo apt-get install php7.0-mysql libapache2-mod-php7.0 -y -qq
+        sudo a2dismod php5
+        sudo a2enmod php7.0
+        sudo apachectl restart
+
+        # install dependencies for laravel-elixir
+        sudo apt-get install libnotify-bin -y -qq
+
         # set start directory after ssh-login
         echo "cd /var/www" >> /home/vagrant/.profile
         echo "cd /var/www" >> /home/vagrant/.bashrc
         
         # update built-in composer
-        sudo /usr/local/bin/composer self-update
+        sudo /usr/local/bin/composer self-update -q
         
         # install laravel dependencies
-        composer install
+        composer install -q
         
         # install npm
-        npm install --save
+        npm install --save --silent
 
-        # install dependencies for laravel-elixir
-        sudo apt-get install libnotify-bin
-        
         # set locale to de_DE
         sudo locale-gen de_DE.UTF-8
     SCRIPT
