@@ -2,14 +2,14 @@
 Vagrantbox for laravel, uses scotch/box with a few customizations in vagrant file
 
 All credits for the used vagrant box inside goes to [Scotch Box](http://box.scotch.io/).
-Check out the official docs at: [box.scotch.io][http://box.scotch.io].
+Check out the official docs at: [box.scotch.io](http://box.scotch.io).
 
 ## Features
 
 ### System Stuff
 
 - Ubuntu 14.04 LTS (Trusty Tahr)
-- PHP 5.6
+- PHP 7.0
 - Ruby 2.2.x
 - Vim
 - Git
@@ -63,9 +63,9 @@ Check out the official docs at: [box.scotch.io][http://box.scotch.io].
 
 ## Get Started
 
-* Download and Install [Vagrant][3]
-* Download and Install [VirtualBox][4]
-* Clone the Scotch Box [GitHub Repository](https://github.com/scotch-io/scotch-box)
+* Download and Install [Vagrant](https://www.vagrantup.com/downloads.html)
+* Download and Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* Clone this [GitHub Repository](https://github.com/rokde/laravel-box)
 * Run ``` vagrant up ```
 * Access Your Project at  [http://192.168.33.10/](http://192.168.33.10/)
 
@@ -168,35 +168,25 @@ Or if you want "www" to work as well, do:
 192.168.33.10 whatever-i-want.local www.whatever-i-want.local
 ```
 
-Technically you could also use a Vagrant Plugin like [Vagrant Hostmanager][15] to automatically update your host file when you run Vagrant Up. However, the purpose of Scotch Box is to have as little dependencies as possible so that it's always working when you run "vagrant up".
+Technically you could also use a Vagrant Plugin like [Vagrant Hostmanager](https://github.com/smdahlen/vagrant-hostmanager) to automatically update your host file when you run Vagrant Up. However, the purpose of Scotch Box is to have as little dependencies as possible so that it's always working when you run "vagrant up".
+This plugin is fully supported from scratch.
 
 
 ## Configuration
 
-You may want to change some of the out-of-the-box configurations for
-the various parts that come with Scotch Box.  To do so, `vagrant ssh`
-into the box, and edit the appropriate file.  For example, to change
-PHP settings:
+You may want to change some of the out-of-the-box configurations for the various parts that come with Scotch Box. To do so, `vagrant ssh` into the box, and edit the appropriate file. For example, to change PHP settings:
 
     vagrant ssh
     sudo vim /etc/php5/apache2/conf.d/user.ini
 
-Note that the changes that you make will be for the current running
-Scotch Box only.  If you `vagrant destroy` and then `vagrant up` your
-box again, these manual configuration changes will be lost.
+Note that the changes that you make will be for the current running Scotch Box only. If you `vagrant destroy` and then `vagrant up` your box again, these manual configuration changes will be lost.
 
-If you prefer to automate your configuration changes so that you can
-destroy and re-create boxes as needed, Vagrant allows you to create a
-"provision script" that runs as part of `vagrant up`.  See the
-[Vagrant
-documentation](https://docs.vagrantup.com/v2/getting-started/provisioning.html)
-for notes.  For example, you could add the following line to your
-Vagrantfile under the `config.vm.hostname = "scotchbox"` line:
+If you prefer to automate your configuration changes so that you can destroy and re-create boxes as needed, Vagrant allows you to create a "provision script" that runs as part of `vagrant up`.  See the [Vagrant documentation](https://docs.vagrantup.com/v2/getting-started/provisioning.html)
+for notes. For example, you could add the following line to your Vagrantfile under the `config.vm.hostname = "scotchbox"` line:
 
     config.vm.provision :shell, path: "bootstrap.sh"
 
-and then create `bootstrap.sh` with the following content in the same
-directory as the Vagrantfile:
+and then create `bootstrap.sh` with the following content in the same directory as the Vagrantfile:
 
     #!/bin/bash
     # Disable Zend OPcache
@@ -204,34 +194,3 @@ directory as the Vagrantfile:
 
 This script will be run each time you `vagrant up`, and it can be run
 on an already-up box using `vagrant provision`.
-
-## PHP7 Install Instructions
-
-```
-sudo apt-get update
-sudo add-apt-repository ppa:ondrej/php
-sudo apt-get install php7.0
-sudo apt-get update
-sudo apt-get install php7.0-mysql libapache2-mod-php7.0
-sudo a2dismod php5
-sudo a2enmod php7.0
-sudo apachectl restart
-```
-
- [1]: https://github.com/MiniCodeMonkey/Vagrant-LAMP-Stack
- [2]: http://scotch.io/tutorials/get-vagrant-up-and-running-in-no-time
- [3]: https://www.vagrantup.com/downloads.html
- [4]: https://www.virtualbox.org/wiki/Downloads
- [5]: http://www.sequelpro.com/
- [6]: http://www.navicat.com/
- [7]: http://github.com/scotch-io
- [8]: http://twitter.com/scotch_io
- [9]: https://github.com/smdahlen/vagrant-hostmanager
- [10]: http://scotch.io/tutorials/sharing-your-virtual-machine-on-the-web-with-vagrant-share
- [11]: http://scotch.io/tutorials/php/getting-started-with-laravel-homestead
- [12]: https://www.vagrantup.com/downloads.html
- [13]: https://www.virtualbox.org/wiki/Downloads
- [14]: http://192.168.33.10/
- [15]: https://github.com/smdahlen/vagrant-hostmanager
- [16]: http://box.scotch.io
- [17]: http://scotch.io/bar-talk/introducing-scotch-box-a-vagrant-lamp-stack-that-just-works
