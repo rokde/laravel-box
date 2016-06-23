@@ -200,3 +200,15 @@ and then create `bootstrap.sh` with the following content in the same directory 
 
 This script will be run each time you `vagrant up`, and it can be run
 on an already-up box using `vagrant provision`.
+
+## Laravel Configuration
+
+You have to set the following data within your `.env` file:
+```bash
+DB_DATABASE=scotchbox
+DB_USERNAME=root
+DB_PASSWORD=root
+
+MAIL_PORT=1025
+```
+The other settings are quite good, when you used the [laravel installer](https://github.com/laravel/installer).
